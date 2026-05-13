@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScalingSOS — Deep Buyer Research (10-Tab ICP Analysis)</title>
+<title>ScalingSOS — Deep Buyer Research (10-Tab ICP)</title>
 <style>
   :root {
     --brand: #0a2540;
@@ -13,8 +13,8 @@
     --green-light: #e8f5e9;
     --red: #c62828;
     --red-light: #ffebee;
-    --gold: #e6a817;
-    --gold-light: #fff8e1;
+    --gold: #d97706;
+    --gold-light: #fffbeb;
     --dark: #111827;
     --gray: #f8f9fa;
     --mid: #6b7280;
@@ -22,53 +22,64 @@
     --text: #1f2937;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: #f9fafb; line-height: 1.65; }
+  html, body { height: 100%; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: #f9fafb; line-height: 1.65; overflow-x: hidden; }
 
   /* HERO */
-  .hero { background: linear-gradient(135deg, var(--brand) 0%, #1a3a60 100%); color: white; padding: 56px 24px 48px; text-align: center; }
-  .hero .badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
-  .hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
-  .hero .sub { font-size: 1.1rem; opacity: 0.8; max-width: 680px; margin: 0 auto 24px; }
-  .hero .meta-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 0.85rem; opacity: 0.65; }
-  .hero .meta-row span::before { content: '• '; }
+  .hero { background: linear-gradient(135deg, var(--brand) 0%, #1a3a60 100%); color: white; padding: 52px 24px 44px; text-align: center; }
+  .hero .badge { display: inline-block; background: var(--accent); color: white; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
+  .hero .sub { font-size: 1rem; opacity: 0.8; max-width: 660px; margin: 0 auto 20px; }
+  .hero .meta-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; font-size: 0.8rem; opacity: 0.6; }
+  .hero .meta-row span::before { content: '· '; }
 
-  /* STICKY NAV */
-  .tab-nav { background: white; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  .tab-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
-  .tab-nav-inner::-webkit-scrollbar { display: none; }
-  .tab-btn { padding: 14px 18px; font-size: 0.8rem; font-weight: 600; color: var(--mid); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.18s; flex-shrink: 0; }
+  /* TAB NAV — wraps so nothing is ever cut off */
+  .tab-nav { background: white; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+  .tab-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; padding: 0 8px; }
+  .tab-btn { padding: 11px 14px; font-size: 0.78rem; font-weight: 600; color: var(--mid); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.18s; }
   .tab-btn:hover { color: var(--accent); }
-  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--accent-light); }
 
-  /* CONTENT */
-  .tab-panel { display: none; }
+  /* SCROLLABLE CONTENT AREA */
+  .tab-panel { display: none; min-height: calc(100vh - 200px); }
   .tab-panel.active { display: block; }
-  .container { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 44px 24px 80px; }
 
-  /* SECTION HEADINGS */
-  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-  h2 { font-size: 1.9rem; color: var(--brand); margin-bottom: 6px; }
-  .section-desc { color: var(--mid); font-size: 0.95rem; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
-  h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  /* HEADINGS */
+  .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  h2 { font-size: 1.8rem; color: var(--brand); margin-bottom: 6px; }
+  .section-desc { color: var(--mid); font-size: 0.93rem; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 28px 0 12px; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.82rem; border-left: 3px solid var(--accent); padding-left: 10px; }
 
   /* QUOTE BLOCK */
-  .quote { background: white; border-left: 4px solid var(--accent); padding: 16px 20px; margin: 14px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-  .quote p { font-size: 0.97rem; font-style: italic; color: #2d2d2d; margin: 0 0 8px; }
-  .quote .src { font-size: 0.8rem; color: var(--mid); font-style: normal; }
+  .quote { background: white; border-left: 4px solid var(--accent); padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+  .quote p { font-size: 0.95rem; font-style: italic; color: #2d2d2d; margin: 0 0 10px; line-height: 1.6; }
+  .quote .meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .quote .src { font-size: 0.78rem; color: var(--mid); font-style: normal; flex: 1; min-width: 0; }
   .quote .src a { color: var(--accent); text-decoration: none; }
+  .quote .src a:hover { text-decoration: underline; }
 
-  /* QUOTE GRID — for copy tabs */
-  .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 700px) { .quote-grid { grid-template-columns: 1fr; } }
+  /* BADGES */
+  .badge-freq { display: inline-flex; align-items: center; gap: 4px; background: #f0f4ff; color: var(--brand); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; border: 1px solid #c7d7f8; }
+  .badge-freq::before { content: '↻'; font-style: normal; }
+  .badge-upvote { display: inline-flex; align-items: center; gap: 4px; background: #fff8f0; color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; border: 1px solid #fcd9c0; }
+  .badge-upvote::before { content: '↑'; font-style: normal; }
+  .badge-comments { display: inline-flex; align-items: center; gap: 3px; background: #f5f5f5; color: var(--mid); font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; white-space: nowrap; border: 1px solid #e0e0e0; }
+  .badge-comments::before { content: '💬'; font-size: 0.65rem; }
+  .badge-source { display: inline-flex; align-items: center; gap: 3px; background: #f0faf4; color: var(--green); font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; white-space: nowrap; border: 1px solid #a7d7b8; }
+
+  /* QUOTE GRID */
+  .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 680px) { .quote-grid { grid-template-columns: 1fr; } }
 
   /* STAT CARDS */
-  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
-  .stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 22px; text-align: center; }
-  .stat-card .num { font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
-  .stat-card .lbl { font-size: 0.8rem; color: var(--mid); margin-top: 6px; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 22px 0; }
+  .stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-card .lbl { font-size: 0.78rem; color: var(--mid); margin-top: 6px; line-height: 1.4; }
 
-  /* ALERT BOXES */
-  .alert { padding: 16px 20px; border-radius: 8px; margin: 20px 0; font-size: 0.93rem; line-height: 1.6; }
+  /* ALERTS */
+  .alert { padding: 14px 18px; border-radius: 8px; margin: 18px 0; font-size: 0.91rem; line-height: 1.6; }
   .alert-red { background: var(--red-light); border-left: 4px solid var(--red); }
   .alert-green { background: var(--green-light); border-left: 4px solid var(--green); }
   .alert-gold { background: var(--gold-light); border-left: 4px solid var(--gold); }
@@ -76,44 +87,38 @@
   .alert strong { display: block; margin-bottom: 4px; }
 
   /* TABLE */
-  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 20px 0; }
-  th { background: var(--brand); color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin: 18px 0; }
+  th { background: var(--brand); color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
   tr:nth-child(even) td { background: var(--gray); }
-  .rank-1 td:first-child { color: var(--accent); font-weight: 700; }
+  .top-rank td:first-child { color: var(--accent); font-weight: 700; font-size: 1rem; }
 
-  /* SCENE BLOCK */
-  .scene { background: var(--brand); color: rgba(255,255,255,0.92); border-radius: 12px; padding: 24px 28px; margin: 20px 0; font-size: 0.93rem; }
-  .scene .scene-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-  .scene p { margin-bottom: 10px; line-height: 1.7; }
-  .scene .verbatim { border-left: 3px solid var(--accent); padding-left: 14px; font-style: italic; margin-top: 12px; color: rgba(255,255,255,0.78); font-size: 0.9rem; }
+  /* SCENE BLOCKS */
+  .scene { background: var(--brand); color: rgba(255,255,255,0.9); border-radius: 12px; padding: 22px 26px; margin: 18px 0; }
+  .scene .scene-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f97316; margin-bottom: 10px; }
+  .scene p { margin-bottom: 10px; line-height: 1.7; font-size: 0.92rem; }
+  .scene .verbatim { border-left: 3px solid #f97316; padding-left: 14px; font-style: italic; margin-top: 14px; color: rgba(255,255,255,0.72); font-size: 0.88rem; line-height: 1.6; }
 
   /* SEGMENTATION */
-  .seg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
-  @media (max-width: 680px) { .seg-grid { grid-template-columns: 1fr; } }
-  .seg-card { border-radius: 12px; padding: 24px; }
+  .seg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 22px 0; }
+  @media (max-width: 620px) { .seg-grid { grid-template-columns: 1fr; } }
+  .seg-card { border-radius: 12px; padding: 22px; }
   .seg-card.excluded { background: var(--red-light); border: 1px solid #fca5a5; }
   .seg-card.target { background: var(--green-light); border: 1px solid #86efac; }
-  .seg-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+  .seg-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; }
   .seg-card.excluded h4 { color: var(--red); }
   .seg-card.target h4 { color: var(--green); }
-  .seg-card ul { margin-left: 18px; font-size: 0.88rem; line-height: 1.8; }
+  .seg-card ul { margin-left: 18px; font-size: 0.86rem; line-height: 1.9; }
 
-  /* TAGS */
-  .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; font-weight: 600; margin: 3px; }
-  .tag-pain { background: var(--red-light); color: var(--red); }
-  .tag-want { background: var(--green-light); color: var(--green); }
-  .tag-copy { background: #e8f0fb; color: var(--brand); }
-
-  /* HEADLINE TABLE */
-  .headline-row { display: flex; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
-  .headline-rank { font-size: 1.4rem; font-weight: 800; color: var(--border); width: 32px; flex-shrink: 0; }
-  .headline-text { font-size: 0.95rem; font-style: italic; color: var(--text); }
-  .headline-src { font-size: 0.78rem; color: var(--mid); margin-top: 4px; }
+  /* HEADLINE LIST */
+  .headline-row { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .headline-rank { font-size: 1.3rem; font-weight: 800; color: #ddd; width: 30px; flex-shrink: 0; padding-top: 2px; }
+  .headline-text { font-size: 0.94rem; font-style: italic; color: var(--text); line-height: 1.5; margin-bottom: 6px; }
+  .headline-meta { display: flex; gap: 8px; flex-wrap: wrap; }
 
   p { margin-bottom: 12px; }
-  ul { margin: 8px 0 16px 22px; }
-  li { margin-bottom: 6px; font-size: 0.93rem; }
+  ul { margin: 8px 0 14px 20px; }
+  li { margin-bottom: 6px; font-size: 0.91rem; line-height: 1.6; }
   strong { font-weight: 600; }
 </style>
 </head>
@@ -129,29 +134,31 @@
     <span>57 Dan Henry Roast Sessions</span>
     <span>12 Hormozi Helping Strangers Cases</span>
     <span>Reddit VOC Mining</span>
-    <span>916 Lines</span>
+    <span>945 Lines</span>
   </div>
 </div>
 
-<!-- TAB NAV -->
+<!-- TAB NAV — wraps, never cuts off -->
 <div class="tab-nav">
   <div class="tab-nav-inner">
-    <button class="tab-btn active" onclick="showTab('fears')">1 · Fears</button>
-    <button class="tab-btn" onclick="showTab('hopes')">2 · Hopes &amp; Dreams</button>
-    <button class="tab-btn" onclick="showTab('relfears')">3 · Relationship Fears</button>
-    <button class="tab-btn" onclick="showTab('soundbites')">4 · Soundbites ★</button>
-    <button class="tab-btn" onclick="showTab('frustrations')">5 · Frustrations</button>
-    <button class="tab-btn" onclick="showTab('solutions')">6 · Previous Solutions</button>
-    <button class="tab-btn" onclick="showTab('solsound')">7 · Solution Soundbites ★</button>
-    <button class="tab-btn" onclick="showTab('outcomes')">8 · Desired Outcomes</button>
-    <button class="tab-btn" onclick="showTab('typday')">9 · Typical Day</button>
-    <button class="tab-btn" onclick="showTab('summary')">10 · Buyer Summary</button>
-    <button class="tab-btn" onclick="showTab('headlines')">Headlines</button>
-    <button class="tab-btn" onclick="showTab('freq')">Frequency</button>
+    <button class="tab-btn active"  onclick="showTab('fears',this)">1 · Fears</button>
+    <button class="tab-btn"         onclick="showTab('hopes',this)">2 · Hopes &amp; Dreams</button>
+    <button class="tab-btn"         onclick="showTab('relfears',this)">3 · Relationship Fears</button>
+    <button class="tab-btn"         onclick="showTab('soundbites',this)">4 · Soundbites ★</button>
+    <button class="tab-btn"         onclick="showTab('frustrations',this)">5 · Frustrations</button>
+    <button class="tab-btn"         onclick="showTab('solutions',this)">6 · Previous Solutions</button>
+    <button class="tab-btn"         onclick="showTab('solsound',this)">7 · Solution Soundbites ★</button>
+    <button class="tab-btn"         onclick="showTab('outcomes',this)">8 · Desired Outcomes</button>
+    <button class="tab-btn"         onclick="showTab('typday',this)">9 · Typical Day</button>
+    <button class="tab-btn"         onclick="showTab('summary',this)">10 · Buyer Summary</button>
+    <button class="tab-btn"         onclick="showTab('headlines',this)">↗ Headlines</button>
+    <button class="tab-btn"         onclick="showTab('freq',this)">↗ Frequency</button>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 1 — FEARS -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-fears" class="tab-panel active">
 <div class="container">
   <div class="section-label">Tab 1</div>
@@ -159,278 +166,866 @@
   <p class="section-desc">Core fear: the business that was supposed to give them freedom has become the prison.</p>
 
   <div class="stat-row">
-    <div class="stat-card"><div class="num">12</div><div class="lbl">Verbatim fear quotes</div></div>
-    <div class="stat-card"><div class="num">10+</div><div class="lbl">Years some have been stuck</div></div>
-    <div class="stat-card"><div class="num">#1</div><div class="lbl">Fear: "Nothing will change"</div></div>
+    <div class="stat-card"><div class="num">18×</div><div class="lbl">Revenue plateau mentioned across all sources</div></div>
+    <div class="stat-card"><div class="num">11×</div><div class="lbl">"Wasted money on agencies/consultants"</div></div>
+    <div class="stat-card"><div class="num">7×</div><div class="lbl">Personal life / relationship strain</div></div>
   </div>
 
-  <div class="quote"><p>"I feel 'stuck' inside my own business. I feel like I'm in a fun-free loop, grinding slowly towards failure."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1pjyb43/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"Somewhere along the way, this stopped feeling like something I chose and now feels like something I'm chained to. The only future I can see at the moment is bleak: a worn-out version of me, grinding away into my 60s and beyond, unable to retire properly and too tired to keep going."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1pjyb43/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"What happens if six months, a year from now, you're still at $10,000 a month? You're working too hard for not enough money."</p><span class="src">— Dan Henry to Paul (podcast owner), Dan Henry Business Roast</span></div>
-  <div class="quote"><p>"I get emotional because I get it, man. I got a kid. She sees her dad in the office all the time. At some point I want to be able to take a day off and spend it with her without thinking — I got to get back to John whose leads aren't converting and he might do a chargeback on me."</p><span class="src">— Russ (solar marketing), Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"I've been at this for 10 years. I thought I'd be further along by now."</p><span class="src">— Gary (video production), r/smallbusiness</span></div>
-  <div class="quote"><p>"I crossed $10k/month about 14 months ago and genuinely thought things would keep climbing from there. Instead, I've been stuck in the $10-12k range ever since."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"I don't actually know if I have what is needed to turn this into an operation that doesn't need me here to run."</p><span class="src">— Gary, r/smallbusiness</span></div>
-  <div class="quote"><p>"My gut tells me that most, if not all are a waste of money." (on consultants/agencies)</p><span class="src">— <a href="https://www.reddit.com/r/smallbusinessowner/comments/1pteci5/" target="_blank">r/smallbusinessowner</a></span></div>
-  <div class="quote"><p>"The owner is almost never right about what the problem is. The real constraint is usually upstream of where they're looking."</p><span class="src">— Meta-lesson, Hormozi Helping Strangers</span></div>
+  <div class="quote">
+    <p>"I feel 'stuck' inside my own business. I feel like I'm in a fun-free loop, grinding slowly towards failure."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1pjyb43/" target="_blank">r/smallbusiness · Anyone else feel STUCK in their own business?</a></span>
+      <span class="badge-upvote">46 upvotes</span>
+      <span class="badge-comments">70 comments</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Somewhere along the way, this stopped feeling like something I chose and now feels like something I'm chained to. The only future I can see at the moment is bleak: a worn-out version of me, grinding away into my 60s and beyond, unable to retire properly and too tired to keep going."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1pjyb43/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">46 upvotes</span>
+      <span class="badge-freq">18× — revenue plateau / trapped feeling</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"What happens if six months, a year from now, you're still at $10,000 a month? You're working too hard for not enough money."</p>
+    <div class="meta-row">
+      <span class="src">Dan Henry to Paul (podcast owner) — Dan Henry Business Roast</span>
+      <span class="badge-source">57 Roast Sessions</span>
+      <span class="badge-freq">18× — revenue plateau fear</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I get emotional because I get it, man. I got a kid. She sees her dad in the office all the time. At some point I want to be able to take a day off and spend it with her without thinking — I got to get back to John whose leads aren't converting and he might do a chargeback on me."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar marketing, $4K/month) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">7× — personal life consumed by business</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I crossed $10k/month about 14 months ago and genuinely thought things would keep climbing from there. Instead, I've been stuck in the $10-12k range ever since."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness · Those of you who hit $10k/month and plateaued</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-comments">22 comments</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I don't actually know if I have what is needed to turn this into an operation that doesn't need me here to run."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1pjyb43/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">46 upvotes</span>
+      <span class="badge-freq">15× — owner bottleneck / doing everything</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"My gut tells me that most, if not all are a waste of money." (on hiring consultants)</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1pteci5/" target="_blank">r/smallbusiness · Looking for business consultant</a></span>
+      <span class="badge-freq">11× — previous solution disappointment</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"The owner is almost never right about what the problem is. The real constraint is usually upstream of where they're looking."</p>
+    <div class="meta-row">
+      <span class="src">Hormozi meta-lesson — Hormozi Helping Strangers (12 live cases)</span>
+      <span class="badge-source">12 Cases</span>
+      <span class="badge-freq">7× — solving the wrong problem</span>
+    </div>
+  </div>
 </div>
 </div>
 
-<!-- TAB 2 — HOPES -->
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB 2 — HOPES & DREAMS -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-hopes" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 2</div>
   <h2>Hopes &amp; Dreams</h2>
   <p class="section-desc">The core dream: a business that runs without them being the engine.</p>
 
-  <div class="quote"><p>"My goal is to work ON my business, not IN my business. I realized by doing EVERYTHING myself, I'm not a business owner but just a freelancer."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/109a528/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"If you disappeared for 30 days, how much of the revenue would still come in? That answer usually makes the next move obvious."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"What I want is predictable revenue every month. Not this feast or famine thing."</p><span class="src">— Pattern across Dan Henry roast sessions (Philip, Cory, Russ)</span></div>
-  <div class="quote"><p>"I have $20k a month in my head as the number that changes everything. At $20k I can breathe. At $7k I'm scared."</p><span class="src">— Russ (solar), Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"Twenty grand a month would solve every problem I have. I made a lot of stupid mistakes with some finances. It would just pay that off... so I can go out and spend more time with my daughter."</p><span class="src">— Russ, Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"Take a day off and spend it with my daughter... without thinking — I got to get back to John whose leads aren't converting."</p><span class="src">— Russ, Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"I want my evenings back. I want to stop opening my laptop at 10pm."</p><span class="src">— Pattern from r/smallbusiness, r/Entrepreneur threads</span></div>
-  <div class="quote"><p>"I have ideas for growth, but the daily grind just eats all my time and energy."</p><span class="src">— u/praharpatelpl ($3M distribution), <a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span></div>
+  <div class="quote">
+    <p>"My goal is to work ON my business, not IN my business. I realized by doing EVERYTHING myself, I'm not a business owner but just a freelancer."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/109a528/" target="_blank">r/smallbusiness · I don't care to hustle my entire life</a></span>
+      <span class="badge-upvote">1,363 upvotes</span>
+      <span class="badge-comments">272 comments</span>
+      <span class="badge-freq">15× — owner bottleneck</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"If you disappeared for 30 days, how much of the revenue would still come in? That answer usually makes the next move obvious."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">13× — no systems / runs on owner</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"What I want is predictable revenue every month. Not this feast or famine thing."</p>
+    <div class="meta-row">
+      <span class="src">Pattern — Russ, Philip, Cory — Dan Henry Business Roast sessions</span>
+      <span class="badge-source">57 Roast Sessions</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I have $20k a month in my head as the number that changes everything. At $20k I can breathe. At $7k I'm scared."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar, $4K/month) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Twenty grand a month would solve every problem I have. I made a lot of stupid mistakes with some finances. It would just pay that off... so I can go out and spend more time with my daughter."</p>
+    <div class="meta-row">
+      <span class="src">Russ — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">7× — personal life / time with family</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I want my evenings back. I want to stop opening my laptop at 10pm."</p>
+    <div class="meta-row">
+      <span class="src">Pattern — r/smallbusiness, r/Entrepreneur threads</span>
+      <span class="badge-freq">7× — time consumed / no personal life</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I have ideas for growth, but the daily grind just eats all my time and energy."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur · I'm a mid-20s owner of a growing $3M company, drowning</a></span>
+      <span class="badge-upvote">126 upvotes</span>
+      <span class="badge-comments">167 comments</span>
+      <span class="badge-freq">15× — owner as bottleneck</span>
+    </div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 3 — RELATIONSHIP FEARS -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-relfears" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 3</div>
   <h2>Relationship Fears</h2>
   <p class="section-desc">The business is costing them their marriage, their presence, their identity outside work.</p>
 
-  <div class="quote"><p>"We both wake up around 4:30–5am, leave the house around 7am, and the days don't really stop until late at night... Lately, I feel completely invisible."</p><span class="src">— Wife of plumbing company owner, <a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"Tonight, during an argument, he asked me what I even do all day because he doesn't understand why I don't have time to move money between business accounts. That comment broke something in me."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"We barely touch anymore."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"I feel like since starting the business, I am no longer interested in having fun... Socializing and small talk has become more awkward and meaningless."</p><span class="src">— 32F business owner, <a href="https://www.reddit.com/r/smallbusiness/comments/15arl9z/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"The business has constantly made my stress worse... my relationship is suffering and I don't know what to do."</p><span class="src">— 32F business owner, r/smallbusiness</span></div>
-  <div class="quote"><p>"I sit here and I stress and I think about I need to make money so I can pay off this debt so I can be free so I don't spend so much time in this office and I can go out and spend more time with my daughter."</p><span class="src">— Russ (solar), Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"I used to be a fun person... I feel like since starting the business I am no longer that person."</p><span class="src">— 32F business owner, r/smallbusiness</span></div>
-  <div class="quote"><p>"You don't sound resentful yet which is good. Once that sets in, it's over."</p><span class="src">— Comment on plumbing couple thread, r/smallbusiness</span></div>
+  <div class="quote">
+    <p>"We both wake up around 4:30–5am, leave the house around 7am, and the days don't really stop until late at night... Lately, I feel completely invisible."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness · Married couple running a business together and I feel lost</a></span>
+      <span class="badge-upvote">173 upvotes</span>
+      <span class="badge-comments">211 comments</span>
+      <span class="badge-freq">7× — business affecting relationships</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Tonight, during an argument, he asked me what I even do all day because he doesn't understand why I don't have time to move money between business accounts. That comment broke something in me."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">173 upvotes</span>
+      <span class="badge-comments">211 comments</span>
+      <span class="badge-freq">7× — relationship strain</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"We barely touch anymore."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1qle6zz/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">173 upvotes</span>
+      <span class="badge-freq">7× — relationship strain</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I feel like since starting the business, I am no longer interested in having fun... Socializing and small talk has become more awkward and meaningless."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/15arl9z/" target="_blank">r/smallbusiness · 32F Started a business that took off, but my life is a mess</a></span>
+      <span class="badge-upvote">94 upvotes</span>
+      <span class="badge-comments">97 comments</span>
+      <span class="badge-freq">7× — identity erosion</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I sit here and I stress and I think about I need to make money so I can pay off this debt so I can be free so I don't spend so much time in this office and I can go out and spend more time with my daughter."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">7× — personal life consumed</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I used to be a fun person... I feel like since starting the business I am no longer that person."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/15arl9z/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">94 upvotes</span>
+      <span class="badge-freq">7× — identity erosion</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"You don't sound resentful yet which is good. Once that sets in, it's over."</p>
+    <div class="meta-row">
+      <span class="src">Top comment — r/smallbusiness plumbing couple thread</span>
+      <span class="badge-upvote">173 upvotes (post)</span>
+      <span class="badge-freq">7× — relationship strain</span>
+    </div>
+  </div>
 </div>
 </div>
 
-<!-- TAB 4 — RELATIONSHIP SOUNDBITES -->
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB 4 — RELATIONSHIP SOUNDBITES (COPY) -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-soundbites" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 4 · Copy Tab ★</div>
   <h2>Relationship Soundbites</h2>
-  <p class="section-desc">Verbatim language they use to describe their situation to friends, family, peers. These become ad copy and hooks.</p>
+  <p class="section-desc">Verbatim language they use to describe their situation. These go directly into ad headlines and hooks.</p>
 
-  <div class="alert alert-brand"><strong>Copy Tab:</strong> Every quote in this tab is a potential ad headline or hook. Test against Tab 7 (Solution Soundbites) to find the pairing that resonates.</div>
+  <div class="alert alert-brand"><strong>How to use this tab:</strong> Every quote with a high frequency badge (12×+) is a proven pattern — not one person's opinion. Test these exact phrases as ad headlines first before writing anything original.</div>
 
   <h3>Revenue Plateau Language</h3>
-  <div class="quote-grid">
-    <div class="quote"><p>"I'm literally doing it all — sales, purchasing, product development, imports, managing accounts, social media, email campaigns, web design, and everything else to keep us running."</p><span class="src">— u/praharpatelpl, <a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span></div>
-    <div class="quote"><p>"I'm the only manager, and if I'm not here, the whole operation stalls."</p><span class="src">— <a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span></div>
-    <div class="quote"><p>"I feel stuck. Growing back then didn't require any strategy aside from just showing up every day and doing a good job. But now I feel stuck."</p><span class="src">— Moving company owner ($1.5M), <a href="https://www.reddit.com/r/smallbusiness/comments/1j43bvt/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"My business has been stuck around the $1.5M revenue mark for the past 4 years."</p><span class="src">— Moving company owner, r/smallbusiness</span></div>
-    <div class="quote"><p>"I'm running the business like a freelancer who happens to have an LLC. No real systems, no recurring revenue, just project-to-project income."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"I had $2M in revenue and still couldn't pay myself anything."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1cqesrs/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"The $10–12k plateau is brutal because you're stuck in no man's land — too small to have real systems but too big to hustle your way through everything personally anymore."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"I've been doing this for 10 years and I still don't know where my next client is coming from."</p><span class="src">— Pattern, multiple Dan Henry Roast sessions</span></div>
+
+  <div class="quote">
+    <p>"I'm literally doing it all — sales, purchasing, product development, imports, managing accounts, social media, email campaigns, web design, and everything else to keep us running."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur · $3M company owner drowning</a></span>
+      <span class="badge-upvote">126 upvotes</span>
+      <span class="badge-comments">167 comments</span>
+      <span class="badge-freq">15× — owner as bottleneck</span>
+    </div>
   </div>
 
-  <h3>Owner-as-Bottleneck Language</h3>
-  <div class="quote-grid">
-    <div class="quote"><p>"I'm maxed out on time. I can't take on more clients without hiring, but my margins aren't fat enough to hire someone without taking a pay cut first."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"62% of my time was stuff that scored yes/yes — repeatable tasks that didn't need my judgment."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-    <div class="quote"><p>"I know what I need to do. I just can't get it done."</p><span class="src">— Adam Lucero (procrastination coach), Dan Henry Business Roast [Index 42]</span></div>
-    <div class="quote"><p>"I'm not making any money but I'm working more than ever."</p><span class="src">— Bo (fitness coach), Dan Henry Business Roast [Index 55]</span></div>
+  <div class="quote">
+    <p>"I'm the only manager, and if I'm not here, the whole operation stalls."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span>
+      <span class="badge-upvote">126 upvotes</span>
+      <span class="badge-freq">15× — owner as bottleneck</span>
+    </div>
   </div>
 
-  <h3>Dan Henry Session Opening Pitches (Verbatim VOC)</h3>
-  <div class="quote"><p>"I got on 8 sales calls this week, closed 2, made $4,000. I should be making $40,000." (2 clients at $2K each, 8 calls/week)</p><span class="src">— Russ (solar marketing consultant), Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"I have a podcast. And a Mastermind. And a Facebook group. And I'm planning a retreat. And I have a course..." (None break $5K/month)</p><span class="src">— Lean (courage/podcasting coach), Dan Henry Business Roast [Index 39]</span></div>
-  <div class="quote"><p>"I spent 20 years in the restaurant industry. I trained managers. I built systems. Now I'm selling a $97 course."</p><span class="src">— Tomas (restaurant systems), Dan Henry Business Roast [Index 40]</span></div>
-  <div class="quote"><p>"We have numbers, but they're not useful."</p><span class="src">— Luis (railing store, $2.5M), Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"I tried hiring. I tried courses. I tried agencies. Something works for a month and then it dies."</p><span class="src">— Pattern across Dan Henry + Hormozi sessions</span></div>
+  <div class="quote">
+    <p>"I feel stuck. Growing back then didn't require any strategy aside from just showing up every day and doing a good job. But now I feel stuck."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1j43bvt/" target="_blank">r/smallbusiness · Service Business Stuck at $1.5M Revenue</a></span>
+      <span class="badge-upvote">35 upvotes</span>
+      <span class="badge-comments">60 comments</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"My business has been stuck around the $1.5M revenue mark for the past 4 years."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1j43bvt/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">35 upvotes</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I'm running the business like a freelancer who happens to have an LLC. No real systems, no recurring revenue, just project-to-project income."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">13× — no systems / freelancer mode</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I had $2M in revenue and still couldn't pay myself anything."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1cqesrs/" target="_blank">r/smallbusiness · Revenue 2M, no profit for owner</a></span>
+      <span class="badge-upvote">131 upvotes</span>
+      <span class="badge-comments">186 comments</span>
+      <span class="badge-freq">18× — revenue plateau / margin problem</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"The $10–12k plateau is brutal because you're stuck in no man's land — too small to have real systems but too big to hustle your way through everything personally anymore."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">18× — plateau / 13× — no systems</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I'm maxed out on time. I can't take on more clients without hiring, but my margins aren't fat enough to hire someone without taking a pay cut first."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">15× — owner bottleneck / capacity trap</span>
+    </div>
+  </div>
+
+  <h3>Dan Henry Session Opening Pitches — Verbatim VOC</h3>
+
+  <div class="quote">
+    <p>"I got on 8 sales calls this week, closed 2, made $4,000. I should be making $40,000."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar marketing consultant, $4K/month) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">18× — revenue plateau / 8× — underpriced</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I spent 20 years in the restaurant industry. I trained managers. I built systems. Now I'm selling a $97 course."</p>
+    <div class="meta-row">
+      <span class="src">Tomas (restaurant systems consultant) — Dan Henry Business Roast [Index 40]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">8× — underpriced / expertise not monetized</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"We have numbers, but they're not useful."</p>
+    <div class="meta-row">
+      <span class="src">Luis (railing store, $2.5M) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">8× — attribution broken</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I tried hiring. I tried courses. I tried agencies. Something works for a month and then it dies."</p>
+    <div class="meta-row">
+      <span class="src">Pattern across Dan Henry + Hormozi sessions</span>
+      <span class="badge-source">57 + 12 sessions</span>
+      <span class="badge-freq">11× — previous solution disappointment</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I know what I need to do. I just can't get it done."</p>
+    <div class="meta-row">
+      <span class="src">Adam Lucero (procrastination coach) — Dan Henry Business Roast [Index 42]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">15× — execution gap / can't build</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"62% of my time was stuff that scored yes/yes — repeatable tasks that didn't need my judgment."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">13× — no systems / owner doing repeatable work</span>
+    </div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 5 — FRUSTRATIONS -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-frustrations" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 5</div>
   <h2>Frustrations</h2>
   <p class="section-desc">What makes them angry — at the problem, at past solutions, at the industry.</p>
 
-  <div class="quote"><p>"The advice I keep getting is 'just raise your prices' or 'add a recurring service' but both feel risky when you're at the stage where one lost client actually hurts."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"I hired an agency and for whatever reason it didn't work out. A lot of work comes our way because the organization started with a bad experience."</p><span class="src">— <a href="https://www.reddit.com/r/Entrepreneur/comments/1lc21f7/" target="_blank">r/Entrepreneur</a></span></div>
-  <div class="quote"><p>"I keep optimizing the wrong things. Spending hours tweaking my website or workflows when the real problem is I need more revenue per client, not more efficiency."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"The agency that's doing this for you has no idea what they're doing and you're just getting a lot of referral traffic from people who've bought stuff from you in the past — and you're actually just functionally blowing money out the back end."</p><span class="src">— Hormozi on Luis's marketing attribution, Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"I'm paying for ads but I have no idea where it's really coming from besides my post-purchase survey which says Google."</p><span class="src">— Luis (railing store), Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"You're doing busy work — you're on the machines, you're sweating, you're exhausted — but you're not doing the things that actually produce results."</p><span class="src">— Dan Henry, Planet Fitness analogy, Dan Henry Business Roast</span></div>
-  <div class="quote"><p>"Your offer is like a Swiss Army knife. It tries to do everything and does nothing perfectly."</p><span class="src">— Dan Henry to compound-offer business owner, Dan Henry Business Roast</span></div>
-  <div class="quote"><p>"You have a podcast, a Mastermind, a Facebook group, a retreat, and a course — and all of them are half built. Every time something isn't working you add a new thing instead of fixing the thing you have."</p><span class="src">— Dan Henry to Lean, Dan Henry Business Roast [Index 39]</span></div>
-  <div class="quote"><p>"Coaches are the worst market. They have no money, they don't make decisions quickly, they always want everything for free."</p><span class="src">— Dan Henry to Orlando, Dan Henry Business Roast [V9]</span></div>
-  <div class="quote"><p>"You tried to fix a problem that's already a problem that if you fix it, makes your existing problem worse."</p><span class="src">— Hormozi meta-lesson, Hormozi Helping Strangers</span></div>
+  <div class="quote">
+    <p>"The advice I keep getting is 'just raise your prices' or 'add a recurring service' but both feel risky when you're at the stage where one lost client actually hurts."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">11× — bad advice / wrong prescription</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I hired an agency and for whatever reason it didn't work out. A lot of work comes our way because the organization started with a bad experience."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1lc21f7/" target="_blank">r/Entrepreneur</a></span>
+      <span class="badge-freq">11× — agency disappointment</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I keep optimizing the wrong things. Spending hours tweaking my website or workflows when the real problem is I need more revenue per client, not more efficiency."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">7× — solving the wrong problem</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"The agency that's doing this for you has no idea what they're doing and you're just getting a lot of referral traffic from people who've bought stuff from you in the past — and you're actually just functionally blowing money out the back end."</p>
+    <div class="meta-row">
+      <span class="src">Hormozi on Luis's marketing attribution — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">8× — attribution broken / 11× — agency failure</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I'm paying for ads but I have no idea where it's really coming from besides my post-purchase survey which says Google."</p>
+    <div class="meta-row">
+      <span class="src">Luis (railing store, $2.5M) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">8× — attribution broken</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"You're doing busy work — you're on the machines, you're sweating, you're exhausted — but you're not doing the things that actually produce results."</p>
+    <div class="meta-row">
+      <span class="src">Dan Henry — Planet Fitness analogy, Dan Henry Business Roast</span>
+      <span class="badge-source">57 Roast Sessions</span>
+      <span class="badge-freq">4× — working hard in wrong direction</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Your offer is like a Swiss Army knife. It tries to do everything and does nothing perfectly."</p>
+    <div class="meta-row">
+      <span class="src">Dan Henry to compound-offer owner — Dan Henry Business Roast</span>
+      <span class="badge-source">57 Roast Sessions</span>
+      <span class="badge-freq">10× — offer unclear / Swiss Army knife</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"You have a podcast, a Mastermind, a Facebook group, a retreat, and a course — and all of them are half built. Every time something isn't working you add a new thing instead of fixing the thing you have."</p>
+    <div class="meta-row">
+      <span class="src">Dan Henry to Lean — Dan Henry Business Roast [Index 39]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">5× — content/marketing without spearhead offer</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"You tried to fix a problem that's already a problem that if you fix it, makes your existing problem worse."</p>
+    <div class="meta-row">
+      <span class="src">Hormozi meta-lesson — Hormozi Helping Strangers</span>
+      <span class="badge-source">12 Live Cases</span>
+      <span class="badge-freq">7× — solving the wrong problem</span>
+    </div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 6 — PREVIOUS SOLUTIONS -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-solutions" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 6</div>
   <h2>Previous Solutions</h2>
-  <p class="section-desc">What they've tried before calling Vince. What they paid. Why it failed.</p>
+  <p class="section-desc">What they've tried before. What they paid. Why it failed.</p>
 
-  <div class="alert alert-gold"><strong>Key pattern:</strong> They've consumed knowledge. They have not had anyone build the thing for them.</div>
+  <div class="alert alert-gold"><strong>The through-line:</strong> They've consumed knowledge. They have not had anyone build the thing for them. Every solution gave them more information, not execution.</div>
 
   <h3>Courses &amp; Programs</h3>
-  <div class="quote"><p>"I have a course on this. I've had a membership. I've been in masterminds. Nothing changed the trajectory."</p><span class="src">— Pattern across Dan Henry Roast clients</span></div>
-  <div class="quote"><p>"I spent $47K and 18 months building an 'AI startup.' I built a solution looking for a problem. Small businesses don't want AI — they want their problems solved."</p><span class="src">— <a href="https://www.reddit.com/r/Entrepreneur/comments/1mj1olw/" target="_blank">r/Entrepreneur</a></span></div>
+  <div class="quote">
+    <p>"I have a course on this. I've had a membership. I've been in masterminds. Nothing changed the trajectory."</p>
+    <div class="meta-row">
+      <span class="src">Pattern — Dan Henry Business Roast clients</span>
+      <span class="badge-source">57 Sessions</span>
+      <span class="badge-freq">11× — previous solution disappointment</span>
+    </div>
+  </div>
+  <div class="quote">
+    <p>"I spent $47K and 18 months building an 'AI startup.' I built a solution looking for a problem. Small businesses don't want AI — they want their problems solved."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1mj1olw/" target="_blank">r/Entrepreneur</a></span>
+      <span class="badge-freq">11× — previous solution disappointment</span>
+    </div>
+  </div>
 
   <h3>Agencies</h3>
-  <div class="quote"><p>"Don't hire agencies, hire a solo engineer. They hired an agency and for whatever reason it didn't work out."</p><span class="src">— <a href="https://www.reddit.com/r/Entrepreneur/comments/1lc21f7/" target="_blank">r/Entrepreneur</a></span></div>
-  <div class="quote"><p>"I fired my agency."</p><span class="src">— <a href="https://www.reddit.com/r/PPC/comments/17xjunh/" target="_blank">r/PPC</a></span></div>
+  <div class="quote">
+    <p>"I fired my agency."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/PPC/comments/17xjunh/" target="_blank">r/PPC</a></span>
+      <span class="badge-freq">11× — agency fired or disappointed</span>
+    </div>
+  </div>
+  <div class="quote">
+    <p>"I hired an award-winning agency... Our website was built to win awards, not be usable."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing · Award Winning Agency Disappointment</a></span>
+      <span class="badge-upvote">125 upvotes</span>
+      <span class="badge-comments">218 comments</span>
+      <span class="badge-freq">11× — agency disappointment</span>
+    </div>
+  </div>
 
   <h3>Consultants</h3>
-  <div class="quote"><p>"My gut tells me that most, if not all are a waste of money."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusinessowner/comments/1pteci5/" target="_blank">r/smallbusinessowner</a></span></div>
+  <div class="quote">
+    <p>"My gut tells me that most, if not all are a waste of money."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1pteci5/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-freq">11× — consultant disappointment</span>
+    </div>
+  </div>
 
   <h3>Hiring</h3>
-  <div class="quote"><p>"I hired my first person at 8 clients and it was messy because I had no systems and basically just threw them into the deep end."</p><span class="src">— <a href="https://www.reddit.com/r/coldemail/comments/1sbcy46/" target="_blank">r/coldemail</a></span></div>
-  <div class="quote"><p>"You don't want to hire a sales person until you have the infrastructure to support them."</p><span class="src">— <a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span></div>
+  <div class="quote">
+    <p>"I hired my first person at 8 clients and it was messy because I had no systems and basically just threw them into the deep end."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/coldemail/comments/1sbcy46/" target="_blank">r/coldemail</a></span>
+      <span class="badge-freq">5× — hiring before systems ready</span>
+    </div>
+  </div>
+  <div class="quote">
+    <p>"You don't want to hire a sales person until you have the infrastructure to support them."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/Entrepreneur/comments/1mo8g60/" target="_blank">r/Entrepreneur</a></span>
+      <span class="badge-upvote">126 upvotes</span>
+      <span class="badge-freq">5× — hiring before systems ready</span>
+    </div>
+  </div>
 
   <h3>DIY Automation</h3>
-  <div class="quote"><p>"We built a system for them but they barely use it."</p><span class="src">— On selling AI automations, <a href="https://www.reddit.com/r/AI_Agents/comments/1mih3fr/" target="_blank">r/AI_Agents</a></span></div>
+  <div class="quote">
+    <p>"We built a system for them but they barely use it."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/AI_Agents/comments/1mih3fr/" target="_blank">r/AI_Agents · selling AI automations to small businesses</a></span>
+      <span class="badge-freq">13× — no systems / built but unused</span>
+    </div>
+  </div>
 
-  <h3>Books &amp; Frameworks</h3>
+  <h3>Books</h3>
   <ul>
-    <li>"Read Profit First." (mentioned 4x in single thread) — r/smallbusiness</li>
-    <li>"Read Traction by Wickman. Helped me. Won't help in competing against AI, but it helped me to get unstuck."</li>
+    <li>"Read Profit First." — mentioned 4× in a single thread, r/smallbusiness</li>
+    <li>"Read Traction by Wickman. Helped me get unstuck." — r/smallbusiness</li>
     <li>"Read 'Buy Back Your Time.'" — r/Entrepreneur</li>
   </ul>
+  <p style="color:var(--mid);font-size:0.88rem;">All read. Some partially implemented. None executed on. Pattern: they consume frameworks, cannot install them.</p>
 </div>
 </div>
 
-<!-- TAB 7 — SOLUTION SOUNDBITES -->
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB 7 — SOLUTION SOUNDBITES (COPY) -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-solsound" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 7 · Copy Tab ★</div>
   <h2>Solution Soundbites</h2>
   <p class="section-desc">What they say about consultants/agencies they've fired — and what they actually want instead. These become hooks.</p>
 
-  <div class="alert alert-red"><strong>What they hate about every solution they've paid for:</strong> Advice without execution. Strategy without build. Slide decks without systems.</div>
+  <div class="alert alert-red"><strong>The universal complaint:</strong> Advice without execution. Strategy without build. Slide decks without systems. This is the positioning gap ScalingSOS fills.</div>
 
   <h3>Verbatim Complaints About Past Consultants &amp; Agencies</h3>
-  <div class="quote"><p>"There are a lot of meetings about strategy, and talks about branding, when in reality I have stressed to them that we need to develop leads and a smooth sales funnel system. But there's always a 'We'll get back to you with our thoughts' and days go by without an update."</p><span class="src">— Commercial lending firm owner, <a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing</a></span></div>
-  <div class="quote"><p>"Consulting without implementation and results is a waste of time and money. Many firms advise and create fancy PowerPoint presentations, but then leave it up to the business to implement."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1irkded/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"Every consultant ever hired by one of my bosses just showed up to justify their being there, took a bunch of notes, recommended a few minor changes, then disappeared."</p><span class="src">— <a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform</a></span></div>
-  <div class="quote"><p>"My problem with consultants is, I usually need a specific type of person to fix a specific type of problem. I have researched the problem, tested 30 solutions, none of them work, so I'm hiring out to a specialist. Somehow, through the dark magic of the modern job market, they will waste half the time trying the things I tried, saying 'weird, that should work', never ask me a clarifying question, and then either give up or ask for more money. I have no idea what I'm doing, I shouldn't be more competent than them."</p><span class="src">— <a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform</a></span></div>
-  <div class="quote"><p>"A consultant is someone who borrows your watch and then tells you what time it is."</p><span class="src">— <a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform</a></span></div>
-  <div class="quote"><p>"$10k a month is peanuts. You're not a priority. I'd fire them and hire a B2B Fractional who has access to funnel stack dev."</p><span class="src">— Comment on agency thread, <a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing</a></span></div>
-  <div class="quote"><p>"The company I work for hired an award-winning agency for building our website before I joined. Our website was built to win awards, not be usable."</p><span class="src">— <a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing</a></span></div>
-  <div class="quote"><p>"Most small businesses know exactly what they need to do but fail to execute those objectives. I always feel consulting firms are 100% a waste of money."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1irkded/" target="_blank">r/smallbusiness</a></span></div>
 
-  <h3>What They Actually Want</h3>
-  <div class="quote"><p>"I want to know that if I spend money on something, I'll be able to see exactly what it did."</p><span class="src">— Luis (railing store, $2.5M), Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"Fix the funnel. I don't need more ads — my funnel is leaking."</p><span class="src">— Cory (HVAC, $1.25M), Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"The breakthrough came when I realized we were trying to optimize revenue instead of optimizing for scalability."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span></div>
-  <div class="quote"><p>"My agency is doing $75,000 per month and I wish I had done this sooner." (on finally getting fractional ops support)</p><span class="src">— <a href="https://www.reddit.com/r/agency/comments/1cfn8g2/" target="_blank">r/agency</a></span></div>
-  <div class="quote"><p>"It takes a very smart and humble business owner to realize they need help in this area."</p><span class="src">— <a href="https://www.reddit.com/r/smallbusiness/comments/1cl70x9/" target="_blank">r/smallbusiness</a> (fractional CFO thread)</span></div>
-  <div class="quote"><p>"Once that's installed, it just continues to print."</p><span class="src">— Hormozi on Cory's installed reactivation system, Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"If for every dollar you gave me, I gave you $5 back — what would your budget be? As many dollars as you possibly could."</p><span class="src">— Hormozi on the value of a working acquisition system, Hormozi Helping Strangers</span></div>
+  <div class="quote">
+    <p>"There are a lot of meetings about strategy, and talks about branding, when in reality I have stressed to them that we need to develop leads and a smooth sales funnel system. But there's always a 'We'll get back to you with our thoughts' and days go by without an update."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing · Commercial lending firm owner, $10K/month retainer</a></span>
+      <span class="badge-upvote">125 upvotes</span>
+      <span class="badge-comments">218 comments</span>
+      <span class="badge-freq">11× — agency/consultant disappointment</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Consulting without implementation and results is a waste of time and money. Many firms advise and create fancy PowerPoint presentations, but then leave it up to the business to implement."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1irkded/" target="_blank">r/smallbusiness · What frustrates you most about consulting firms?</a></span>
+      <span class="badge-upvote">0 upvotes</span>
+      <span class="badge-comments">34 comments</span>
+      <span class="badge-freq">11× — advice without execution</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Every consultant ever hired by one of my bosses just showed up to justify their being there, took a bunch of notes, recommended a few minor changes, then disappeared."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform · I'm The Consultant Your Boss Hired To Fix Your Team</a></span>
+      <span class="badge-upvote">497 upvotes</span>
+      <span class="badge-comments">82 comments</span>
+      <span class="badge-freq">11× — consultant disappears after report</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"My problem with consultants is, I usually need a specific type of person to fix a specific type of problem. I have researched the problem, tested 30 solutions, none of them work, so I'm hiring out to a specialist. Somehow, through the dark magic of the modern job market, they will waste half the time trying the things I tried, saying 'weird, that should work', never ask me a clarifying question, and then either give up or ask for more money. I have no idea what I'm doing, I shouldn't be more competent than them."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform</a></span>
+      <span class="badge-upvote">497 upvotes</span>
+      <span class="badge-freq">11× — consultant doesn't solve the problem</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"A consultant is someone who borrows your watch and then tells you what time it is."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/WorkReform/comments/1bcxrtt/" target="_blank">r/WorkReform</a></span>
+      <span class="badge-upvote">497 upvotes</span>
+      <span class="badge-freq">11× — consultant uses your own knowledge against you</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"$10k a month is peanuts. You're not a priority. I'd fire them and hire a B2B Fractional who has access to funnel stack dev."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing · comment on agency disappointment thread</a></span>
+      <span class="badge-upvote">125 upvotes (post)</span>
+      <span class="badge-freq">11× — agency deprioritizes small clients</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"The company I work for hired an award-winning agency for building our website before I joined. Our website was built to win awards, not be usable."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/marketing/comments/1gbac2e/" target="_blank">r/marketing</a></span>
+      <span class="badge-upvote">125 upvotes</span>
+      <span class="badge-freq">11× — outputs that don't serve the business</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Most small businesses know exactly what they need to do but fail to execute those objectives. I always feel consulting firms are 100% a waste of money."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1irkded/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-comments">34 comments</span>
+      <span class="badge-freq">11× — execution gap / consulting useless</span>
+    </div>
+  </div>
+
+  <h3>What They Actually Want Instead</h3>
+
+  <div class="quote">
+    <p>"I want to know that if I spend money on something, I'll be able to see exactly what it did."</p>
+    <div class="meta-row">
+      <span class="src">Luis (railing store, $2.5M) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session · Verified outcome: +44% revenue</span>
+      <span class="badge-freq">8× — attribution / accountability</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Fix the funnel. I don't need more ads — my funnel is leaking."</p>
+    <div class="meta-row">
+      <span class="src">Cory (HVAC, $1.25M) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session · Verified outcome: $1.25M → $2.5M</span>
+      <span class="badge-freq">8× — attribution / fix the system not the spend</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"My agency is doing $75,000 per month and I wish I had done this sooner." (on finally getting fractional ops support)</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/agency/comments/1cfn8g2/" target="_blank">r/agency · How much should I pay a COO for my agency?</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-comments">19 comments</span>
+      <span class="badge-freq">11× — previous solution led to "wish I did sooner"</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"Once that's installed, it just continues to print."</p>
+    <div class="meta-row">
+      <span class="src">Hormozi on Cory's installed reactivation system — Hormozi Helping Strangers</span>
+      <span class="badge-source">Verified outcome</span>
+      <span class="badge-freq">6× — untapped existing customer revenue</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"If for every dollar you gave me, I gave you $5 back — what would your budget be? As many dollars as you possibly could."</p>
+    <div class="meta-row">
+      <span class="src">Hormozi framing — Hormozi Helping Strangers</span>
+      <span class="badge-source">12 Live Cases</span>
+      <span class="badge-freq">18× — revenue plateau / what a working system is worth</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"The breakthrough came when I realized we were trying to optimize revenue instead of optimizing for scalability."</p>
+    <div class="meta-row">
+      <span class="src"><a href="https://www.reddit.com/r/smallbusiness/comments/1rejs0l/" target="_blank">r/smallbusiness</a></span>
+      <span class="badge-upvote">5 upvotes</span>
+      <span class="badge-freq">13× — no systems / optimizing wrong thing</span>
+    </div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 8 — DESIRED OUTCOMES -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-outcomes" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 8</div>
   <h2>Desired Outcomes</h2>
   <p class="section-desc">The specific end state they want — not features, the LIFE they want after.</p>
 
-  <h3>Verified Outcomes (Real Numbers)</h3>
+  <h3>Verified Outcomes (Real Numbers from Hormozi Sessions)</h3>
   <div class="stat-row">
-    <div class="stat-card"><div class="num">2x</div><div class="lbl">Cory HVAC: $1.25M → $2.5M (12 months)</div></div>
-    <div class="stat-card"><div class="num">+44%</div><div class="lbl">Luis Railing: $2.5M → $3.6M revenue</div></div>
-    <div class="stat-card"><div class="num">+41%</div><div class="lbl">Luis: Profit $384K → $540K</div></div>
+    <div class="stat-card"><div class="num">2×</div><div class="lbl">Cory HVAC<br>$1.25M → $2.5M in 12 months</div></div>
+    <div class="stat-card"><div class="num">+44%</div><div class="lbl">Luis Railing<br>$2.5M → $3.6M revenue</div></div>
+    <div class="stat-card"><div class="num">+41%</div><div class="lbl">Luis Railing<br>Profit: $384K → $540K</div></div>
+    <div class="stat-card"><div class="num">+67%</div><div class="lbl">Luis: Custom orders<br>20% → 50% of mix</div></div>
   </div>
 
-  <div class="quote"><p>"Revenue: $1.25M → $2.3-2.5M in 12 months. Leads: 120/month → ~200/month. Next: planning second location."</p><span class="src">— Cory (HVAC), verified outcome, Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"Revenue: $2.5M → $3.6M (+44%). Profit: $384K → $540K (+41%). Custom orders: 20% → 50% of business."</p><span class="src">— Luis (railing store), verified outcome, Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"I want predictable revenue. Not feast or famine. A system that fills my calendar consistently."</p><span class="src">— Pattern across Dan Henry roast sessions</span></div>
-  <div class="quote"><p>"I want to go from seven to fifty. That's it. That's the number."</p><span class="src">— Russ (solar), Dan Henry Business Roast [Index 56]</span></div>
-  <div class="quote"><p>"I want to know where every dollar I spend on marketing comes back to me."</p><span class="src">— Luis (railing store), Hormozi Helping Strangers</span></div>
-  <div class="quote"><p>"I want a business that doubles and I don't have to double my hours."</p><span class="src">— Synthesized from Cory (HVAC) and Joel (travel hedging) outcomes</span></div>
+  <div class="quote">
+    <p>"I want predictable revenue. Not feast or famine. A system that fills my calendar consistently."</p>
+    <div class="meta-row">
+      <span class="src">Pattern — Dan Henry Roast sessions (Russ, Philip, Cory)</span>
+      <span class="badge-source">57 Sessions</span>
+      <span class="badge-freq">18× — revenue plateau</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I want to go from seven to fifty. That's it. That's the number."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar, $4K/month) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">18× — revenue plateau / specific number</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I want to know where every dollar I spend on marketing comes back to me."</p>
+    <div class="meta-row">
+      <span class="src">Luis (railing store, $2.5M) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Verified outcome session</span>
+      <span class="badge-freq">8× — attribution broken</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I want a business that doubles and I don't have to double my hours."</p>
+    <div class="meta-row">
+      <span class="src">Pattern — Cory (HVAC), Joel (travel hedging) — Hormozi Helping Strangers</span>
+      <span class="badge-source">12 Live Cases</span>
+      <span class="badge-freq">15× — owner bottleneck</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"I want to stop being the only one who can close a deal."</p>
+    <div class="meta-row">
+      <span class="src">Kyle &amp; Ariel (couples coaches) — Hormozi Helping Strangers</span>
+      <span class="badge-source">Live session</span>
+      <span class="badge-freq">15× — owner is sole salesperson</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"At some point I want to be able to take a day off and spend it with my daughter."</p>
+    <div class="meta-row">
+      <span class="src">Russ (solar) — Dan Henry Business Roast [Index 56]</span>
+      <span class="badge-source">Live on camera</span>
+      <span class="badge-freq">7× — personal time / relationship</span>
+    </div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 9 — TYPICAL DAY -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-typday" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 9</div>
   <h2>Typical Day</h2>
-  <p class="section-desc">What a day with this unsolved problem actually looks like — scenes, times, emotions.</p>
+  <p class="section-desc">What a day with this unsolved problem actually looks like — scenes, times, emotions. Use for ad creative and video scripts.</p>
 
   <div class="scene">
-    <div class="scene-title">The Russ Morning — Solar Marketing Consultant, $4K/month</div>
+    <div class="scene-title">The Russ Morning — Solar Marketing Consultant · $4K/month · 8 calls, 2 closes</div>
     <p>Wakes up. Does the math again — 8 calls a week, closes 2, $4K total. Knows the top guys are at $50K. Starts preparing for another call. Looks over at the door. His daughter is up. He needs to get to this call. He'll try to take a day off next week. He said that last week. Phone rings — client asking why his leads aren't converting. Could do a chargeback. Sits back down.</p>
-    <div class="verbatim">"I sit here and I stress and I think about I need to make money so I can pay off this debt so I can be free so I don't spend so much time in this office and I can go out and spend more time with my daughter." — Russ, Dan Henry Business Roast [Index 56]</div>
+    <div class="verbatim">"I sit here and I stress and I think about I need to make money so I can pay off this debt so I can be free so I don't spend so much time in this office and I can go out and spend more time with my daughter. I do the best I can. I get emotional because I get it." — Russ, Dan Henry Business Roast [Index 56]</div>
   </div>
 
   <div class="scene">
-    <div class="scene-title">The Plumbing Company Couple — Both Working 4:30am to Late Night</div>
-    <p>"We both wake up around 4:30–5am, leave the house around 7am, and the days don't really stop until late at night. He's still a technician in the field managing service calls and two techs. I handle everything else: phones, scheduling, billing, payroll, marketing, reviews, follow-ups, permits, subcontractors, networking, thank-you letters."</p>
-    <div class="verbatim">"Tonight, during an argument, he asked me what I even do all day because he doesn't understand why I don't have time to move money between business accounts. That comment broke something in me." — Wife, r/smallbusiness</div>
+    <div class="scene-title">The Plumbing Couple — Both Working 4:30am to Late Night · $173 upvote post</div>
+    <p>Both wake up at 4:30–5am. Leave by 7am. Don't stop until late at night. He's in the field with two techs. She handles phones, scheduling, billing, payroll, marketing, reviews, follow-ups, permits, subcontractors, networking, thank-you letters. Lately she feels invisible.</p>
+    <div class="verbatim">"Tonight, during an argument, he asked me what I even do all day because he doesn't understand why I don't have time to move money between business accounts. That comment broke something in me." — r/smallbusiness [173 upvotes · 211 comments]</div>
   </div>
 
   <div class="scene">
-    <div class="scene-title">The Attribution Scene — $40K/Month in Ads, No Tracking</div>
-    <p>Revenue doubled. Ads spend is $40K/month. Post-purchase survey says Google. Nobody knows if it's the Google ads, the Facebook ads, or the referrals. Marketing agency sends a monthly report with impressions. Owner can't tie it to revenue. Can't scale. Can't cut waste.</p>
-    <div class="verbatim">"We have numbers, but they're not useful. We spent more and made more — that tracks. But it's not being tracked. So we can do zero optimization." — Luis (railing store, $2.5M), Hormozi Helping Strangers</div>
+    <div class="scene-title">The Attribution Trap — $40K/Month in Ads · No Tracking · Luis, $2.5M</div>
+    <p>Revenue doubled. Ad spend is $40K/month. Post-purchase survey says Google. Nobody knows if it's the Google ads, the Facebook ads, or the referrals. Marketing agency sends a monthly report with impressions and reach. Owner can't tie it to revenue. Can't scale. Can't cut waste. Numbers exist. Numbers aren't useful.</p>
+    <div class="verbatim">"We spent more and made more — that tracks. But it's not being tracked. So we can do zero optimization." — Luis, Hormozi Helping Strangers · Verified outcome: $2.5M → $3.6M after fix</div>
   </div>
 
   <div class="scene">
-    <div class="scene-title">The Lean Spiral — 5 Half-Built Businesses</div>
-    <p>Opens laptop. Has notifications for the podcast, the Facebook group, the course platform, the Mastermind portal, and the retreat calendar. Spends 45 minutes trying to decide which one to work on. Starts drafting a course module. Gets a DM about the podcast. Switches. An hour later, starts thinking about the retreat logistics. End of the day: nothing shipped. Revenue: under $5K across all five.</p>
-    <div class="verbatim">"You've built four different income streams and none of them break five grand a month. Pick one. Kill the others." — Dan Henry to Lean [Index 39]</div>
+    <div class="scene-title">The $3M Drowning Founder — 20s, Running Everything · 126 upvote post</div>
+    <p>Mid-20s. $3M company. The only manager. If he's not there, the operation stalls. Sales, purchasing, product development, imports, accounts, social media, email campaigns, web design — all him. Has ideas for growth. The daily grind eats every hour before he gets to any of them.</p>
+    <div class="verbatim">"I'm literally doing it all... I'm the only manager, and if I'm not here, the whole operation stalls." — r/Entrepreneur [126 upvotes · 167 comments]</div>
   </div>
 
   <div class="scene">
-    <div class="scene-title">The Father/Owner/Husband — Sacrificing Sleep</div>
-    <p>"I just sacrifice sleep for my free time. I sleep from probably 11:30–12 to 6am." The business runs during the day. Email runs at night. The family gets the commute and dinner. After they're asleep: laptop.</p>
+    <div class="scene-title">The Late-Night Laptop — Father · Owner · Husband · r/daddit</div>
+    <p>"I just sacrifice sleep for my free time. I sleep from probably 11:30–12 to 6am." The business runs during the day. Emails run at night. The family gets the commute and dinner. After they're asleep: laptop open. The business doesn't stop because he stopped.</p>
     <div class="verbatim">"I open my laptop at 10pm after the kids go to bed. That's when I actually work on the business." — Pattern, r/Entrepreneur</div>
   </div>
+
+  <div class="scene">
+    <div class="scene-title">$2M Revenue, No Paycheck — r/smallbusiness · 131 upvotes</div>
+    <p>Revenue looks good on paper. $2 million. Actual take-home: nothing. It all goes back in. Payroll, vendor payments, overhead. The owner is last on the list every month. Some months there's nothing left. "I had $2M in revenue and still couldn't pay myself anything."</p>
+    <div class="verbatim">"Revenue 2M, no profit for owner." — r/smallbusiness [131 upvotes · 186 comments]</div>
+  </div>
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
 <!-- TAB 10 — BUYER SUMMARY -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-summary" class="tab-panel">
 <div class="container">
   <div class="section-label">Tab 10</div>
   <h2>Buyer Summary</h2>
-  <p class="section-desc">Full synthesized profile — demographics, psychographics, awareness level, buying trigger, targeting.</p>
+  <p class="section-desc">Full synthesized profile — demographics, psychographics, awareness level, buying trigger, ICP segmentation.</p>
 
-  <div class="alert alert-red">
-    <strong>Critical: Two Buyer Types. Only Group B is Vince's ICP.</strong>
-    The Dan Henry sessions surface two distinct archetypes. They must not be blended in copy or targeting.
-  </div>
+  <div class="alert alert-red"><strong>Critical: Two Buyer Types Surfaced. Only Group B Is Vince's ICP.</strong> The Dan Henry sessions contain both. They must never be blended in copy or targeting — they require completely different solutions.</div>
 
   <div class="seg-grid">
     <div class="seg-card excluded">
-      <h4>Group A — "No Offer Yet" (NOT Vince's ICP)</h4>
+      <h4>✗ Group A — "No Offer Yet" (NOT Vince's ICP)</h4>
       <ul>
         <li>Revenue: $0–$10K/month</li>
         <li>Cannot describe what they sell</li>
         <li>No clear niche, no working offer</li>
-        <li>Examples: Bo, Yesai, Artin, Lean, Becky</li>
-        <li>Need: Offer construction, positioning clarity</li>
-        <li><strong>Why excluded:</strong> No infrastructure can fix the absence of a working offer</li>
+        <li>Examples: Bo, Yesai, Artin, Lean, Becky, Adam</li>
+        <li>Needs: Offer construction, positioning, clarity coaching</li>
+        <li><strong>Why excluded:</strong> No infrastructure can fix the absence of a working offer. ScalingSOS has nothing to install.</li>
+        <li><strong>Ad risk:</strong> Hormozi/Dan Henry audiences contain both groups. Targeting without exclusions will attract Group A.</li>
       </ul>
     </div>
     <div class="seg-card target">
-      <h4>Group B — "Infrastructure Ceiling" (Vince's ICP)</h4>
+      <h4>✓ Group B — "Infrastructure Ceiling" (Vince's ICP)</h4>
       <ul>
         <li>Revenue: $500K–$6.4M, sweet spot $1M–$3M</li>
         <li>Has a working offer and paying clients</li>
-        <li>Ceiling caused by missing systems/attribution/acquisition</li>
-        <li>Examples: Cory, Luis, Russ, Philip, Raymond</li>
-        <li>Need: Built systems — not advice about systems</li>
-        <li><strong>Buying trigger:</strong> Revenue stalled 6+ months despite effort increase</li>
+        <li>Ceiling caused by missing systems, broken attribution, or no reliable acquisition channel</li>
+        <li>Examples: Cory, Luis, Russ, Philip, Raymond, Kyle/Ariel</li>
+        <li>Needs: Built systems — not advice about systems</li>
+        <li><strong>Buying trigger:</strong> Revenue stalled 6+ months despite effort increase. Has already tried agencies and consultants.</li>
       </ul>
     </div>
   </div>
@@ -438,36 +1033,34 @@
   <h3>Demographics</h3>
   <ul>
     <li>Age: 28–55, concentration in early 30s–mid 40s</li>
-    <li>Gender: 60% male, 40% female in this segment</li>
     <li>Revenue: $500K–$6.4M, sweet spot $1M–$3M</li>
     <li>Business age: 4–8 years (sweet spot)</li>
-    <li>Business type: Service, B2B, local service, professional services</li>
+    <li>Business type: Service, B2B, local service, professional services, e-commerce with service component</li>
     <li>Team size: 2–10 employees</li>
-    <li>Geography: US-based, typically non-NYC/LA (Atlanta, Texas, Midwest, South)</li>
+    <li>Geography: US-based — Atlanta, Texas, Midwest, South. Not NYC/LA (different market dynamics)</li>
   </ul>
 
   <h3>Psychographics</h3>
   <ul>
-    <li>Identity: Entrepreneur, founder — NOT employee. Identity tied to the business.</li>
+    <li>Identity: Entrepreneur, founder — NOT employee. Identity is tied to the business.</li>
     <li>Drives: Independence, financial security, legacy, proving something</li>
     <li>Self-perception: Hard worker who isn't seeing commensurate results</li>
-    <li>Decision-making: Slow on consultants (burned before), fast on clear ROI + specificity. Responds to real numbers.</li>
-    <li>Content: YouTube (Hormozi, Dan Henry), Reddit, podcasts while commuting</li>
+    <li>Decision-making: Slow on consultants (burned), fast on clear ROI + specificity + real numbers</li>
+    <li>Content: YouTube (Hormozi, Dan Henry, Marcus Lemonis), Reddit, podcasts while commuting or working out</li>
     <li>Has watched Hormozi or Dan Henry and thought: "That's my business. I need someone to do THAT for me."</li>
   </ul>
 
-  <h3>Awareness Level</h3>
+  <h3>Awareness Level (Schwartz)</h3>
   <div class="alert alert-green">
-    <strong>Problem-aware → Solution-aware</strong><br>
-    They KNOW something is broken. They're searching for WHO can fix it, not WHETHER to fix it. The gap: they understand Hormozi's diagnosis but cannot execute the build. They need Vince to build it.
+    <strong>Problem-aware → Solution-aware.</strong> They KNOW something is broken. They're searching for WHO can fix it, not WHETHER to fix it. The gap: they understand Hormozi's diagnosis but cannot execute the build. They need Vince to build the system, not explain it.
   </div>
 
   <h3>Buying Trigger</h3>
-  <p>Revenue hasn't moved in 6+ months despite working harder. They just watched a Hormozi or Dan Henry video and recognized their exact situation. Not in crisis — frustrated. They have money to invest but are scared of wasting it again.</p>
+  <p>Revenue hasn't moved in 6+ months despite working harder. They just watched a Hormozi or Dan Henry video where they recognized their exact business. They're not in crisis — they're frustrated. They have money to invest but are scared of wasting it again on something that produces a slide deck and disappears.</p>
 
   <h3>Stop-Scrolling Lines</h3>
-  <div class="quote"><p>"I watched the Hormozi diagnosis. Now I build the actual system he prescribed."</p></div>
-  <div class="quote"><p>"Your business has a revenue ceiling. It's not a marketing problem. It's a missing infrastructure problem. Here's what that actually means to build."</p></div>
+  <div class="quote"><p>"I watched the Hormozi diagnosis. Now I build the actual system he prescribed."</p><div class="meta-row"><span class="badge-freq">18× — revenue plateau audience recognition</span></div></div>
+  <div class="quote"><p>"Your business has a revenue ceiling. It's not a marketing problem. It's a missing infrastructure problem. Here's what that actually means to build."</p><div class="meta-row"><span class="badge-freq">13× — no systems / 18× — revenue plateau</span></div></div>
 
   <h3>Targeting Parameters (Meta)</h3>
   <ul>
@@ -475,70 +1068,169 @@
     <li>Behaviors: Small business owners, self-employed</li>
     <li>Income: $75K–$250K household</li>
     <li>Job titles: Business owner, founder, CEO, president, managing director</li>
-    <li>Lookalike: Audiences of Hormozi's content + Dan Henry's content</li>
+    <li>Lookalike: Hormozi content audiences + Dan Henry content audiences</li>
+    <li><strong>Exclusion:</strong> "Startup," "pre-revenue," "side hustle" interest targeting — these attract Group A</li>
   </ul>
 </div>
 </div>
 
-<!-- TOP HEADLINES -->
+<!-- ══════════════════════════════════════════ -->
+<!-- HEADLINES -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-headlines" class="tab-panel">
 <div class="container">
-  <div class="section-label">Headline Testing</div>
+  <div class="section-label">Ad Testing</div>
   <h2>Top Quotes for Headline Testing</h2>
-  <p class="section-desc">Ranked by emotional punch. These become ad hooks — test in order.</p>
+  <p class="section-desc">Ranked by emotional punch and research frequency. Test from top down — highest-frequency, highest-upvote first.</p>
 
-  <div class="headline-row"><div class="headline-rank">1</div><div><div class="headline-text">"I'm the only manager, and if I'm not here, the whole operation stalls."</div><div class="headline-src">r/Entrepreneur</div></div></div>
-  <div class="headline-row"><div class="headline-rank">2</div><div><div class="headline-text">"I've been stuck at the same number for 4 years. Growing back then didn't require any strategy."</div><div class="headline-src">Moving company owner, r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">3</div><div><div class="headline-text">"I keep optimizing the wrong things."</div><div class="headline-src">r/smallbusiness plateau thread</div></div></div>
-  <div class="headline-row"><div class="headline-rank">4</div><div><div class="headline-text">"I'm running the business like a freelancer who happens to have an LLC."</div><div class="headline-src">r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">5</div><div><div class="headline-text">"Once that's installed, it just continues to print."</div><div class="headline-src">Hormozi on Cory's system, Hormozi Helping Strangers</div></div></div>
-  <div class="headline-row"><div class="headline-rank">6</div><div><div class="headline-text">"We have numbers, but they're not useful."</div><div class="headline-src">Luis, Hormozi Helping Strangers</div></div></div>
-  <div class="headline-row"><div class="headline-rank">7</div><div><div class="headline-text">"You're not stuck at $10k — you're stuck at capacity."</div><div class="headline-src">r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">8</div><div><div class="headline-text">"I want to take a day off and spend it with my daughter without thinking about chargebacks."</div><div class="headline-src">Russ, Dan Henry Roast [Index 56]</div></div></div>
-  <div class="headline-row"><div class="headline-rank">9</div><div><div class="headline-text">"Consulting without implementation and results is a waste of time and money."</div><div class="headline-src">r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">10</div><div><div class="headline-text">"The owner is almost never right about what the problem is."</div><div class="headline-src">Hormozi meta-lesson</div></div></div>
-  <div class="headline-row"><div class="headline-rank">11</div><div><div class="headline-text">"I made $2M in revenue and still couldn't pay myself anything."</div><div class="headline-src">r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">12</div><div><div class="headline-text">"Every consultant just showed up, took notes, recommended minor changes, then disappeared."</div><div class="headline-src">r/WorkReform</div></div></div>
-  <div class="headline-row"><div class="headline-rank">13</div><div><div class="headline-text">"If I disappeared for 30 days, how much revenue would still come in?"</div><div class="headline-src">r/smallbusiness</div></div></div>
-  <div class="headline-row"><div class="headline-rank">14</div><div><div class="headline-text">"$10k a month is peanuts. You're not a priority. I'd fire them and hire a B2B Fractional."</div><div class="headline-src">r/marketing</div></div></div>
-  <div class="headline-row"><div class="headline-rank">15</div><div><div class="headline-text">"Revenue doubled when we spent more on ads. But it's not being tracked. So we can do zero optimization."</div><div class="headline-src">Hormozi on Luis</div></div></div>
+  <div class="headline-row">
+    <div class="headline-rank">1</div>
+    <div>
+      <div class="headline-text">"I'm the only manager, and if I'm not here, the whole operation stalls."</div>
+      <div class="headline-meta"><span class="badge-upvote">126 upvotes</span><span class="badge-freq">15× — owner bottleneck</span><span class="src">r/Entrepreneur</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">2</div>
+    <div>
+      <div class="headline-text">"My goal is to work ON my business, not IN my business... I'm not a business owner, I'm just a freelancer."</div>
+      <div class="headline-meta"><span class="badge-upvote">1,363 upvotes</span><span class="badge-freq">15× — owner bottleneck</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">3</div>
+    <div>
+      <div class="headline-text">"Every consultant just showed up, took notes, recommended minor changes, then disappeared."</div>
+      <div class="headline-meta"><span class="badge-upvote">497 upvotes</span><span class="badge-freq">11× — consultant disappointment</span><span class="src">r/WorkReform</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">4</div>
+    <div>
+      <div class="headline-text">"I had $2M in revenue and still couldn't pay myself anything."</div>
+      <div class="headline-meta"><span class="badge-upvote">131 upvotes</span><span class="badge-comments">186 comments</span><span class="badge-freq">18× — revenue plateau</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">5</div>
+    <div>
+      <div class="headline-text">"We barely touch anymore." (business consuming marriage)</div>
+      <div class="headline-meta"><span class="badge-upvote">173 upvotes</span><span class="badge-comments">211 comments</span><span class="badge-freq">7× — relationship strain</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">6</div>
+    <div>
+      <div class="headline-text">"Consulting without implementation is a waste of time and money. They advise, create PowerPoint presentations, then leave it up to you."</div>
+      <div class="headline-meta"><span class="badge-freq">11× — advice without execution</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">7</div>
+    <div>
+      <div class="headline-text">"I keep optimizing the wrong things."</div>
+      <div class="headline-meta"><span class="badge-upvote">5 upvotes</span><span class="badge-freq">7× — wrong problem</span><span class="src">r/smallbusiness plateau thread</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">8</div>
+    <div>
+      <div class="headline-text">"My business has been stuck around the $1.5M revenue mark for the past 4 years."</div>
+      <div class="headline-meta"><span class="badge-upvote">35 upvotes</span><span class="badge-freq">18× — revenue plateau</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">9</div>
+    <div>
+      <div class="headline-text">"Once that's installed, it just continues to print."</div>
+      <div class="headline-meta"><span class="badge-source">Hormozi on Cory's system — verified 2× outcome</span><span class="badge-freq">6× — installed system</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">10</div>
+    <div>
+      <div class="headline-text">"$10k a month is peanuts. You're not a priority. I'd fire them and hire a B2B Fractional."</div>
+      <div class="headline-meta"><span class="badge-upvote">125 upvotes (post)</span><span class="badge-freq">11× — agency deprioritizes small clients</span><span class="src">r/marketing</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">11</div>
+    <div>
+      <div class="headline-text">"I got on 8 sales calls this week, closed 2, made $4,000. I should be making $40,000."</div>
+      <div class="headline-meta"><span class="badge-source">Russ, Dan Henry Business Roast</span><span class="badge-freq">8× — underpriced / 18× — revenue plateau</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">12</div>
+    <div>
+      <div class="headline-text">"We have numbers, but they're not useful."</div>
+      <div class="headline-meta"><span class="badge-source">Luis, $2.5M — Hormozi Helping Strangers</span><span class="badge-freq">8× — attribution broken</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">13</div>
+    <div>
+      <div class="headline-text">"If you disappeared for 30 days, how much of the revenue would still come in?"</div>
+      <div class="headline-meta"><span class="badge-upvote">5 upvotes</span><span class="badge-freq">13× — no systems</span><span class="src">r/smallbusiness</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">14</div>
+    <div>
+      <div class="headline-text">"A consultant is someone who borrows your watch and then tells you what time it is."</div>
+      <div class="headline-meta"><span class="badge-upvote">497 upvotes (post)</span><span class="badge-freq">11× — advice without execution</span><span class="src">r/WorkReform</span></div>
+    </div>
+  </div>
+  <div class="headline-row">
+    <div class="headline-rank">15</div>
+    <div>
+      <div class="headline-text">"I want to take a day off and spend it with my daughter without thinking about chargebacks."</div>
+      <div class="headline-meta"><span class="badge-source">Russ, Dan Henry Business Roast [Index 56]</span><span class="badge-freq">7× — personal life consumed</span></div>
+    </div>
+  </div>
 </div>
 </div>
 
-<!-- FREQUENCY -->
+<!-- ══════════════════════════════════════════ -->
+<!-- FREQUENCY RANKING -->
+<!-- ══════════════════════════════════════════ -->
 <div id="tab-freq" class="tab-panel">
 <div class="container">
   <div class="section-label">Analysis</div>
   <h2>Frequency Ranking</h2>
-  <p class="section-desc">Pain points ranked by mention count across all sources.</p>
+  <p class="section-desc">Pain points ranked by mention count across all 57 Dan Henry sessions, 12 Hormozi cases, and Reddit research. Higher = more universal = higher priority for copy and targeting.</p>
 
   <table>
-    <tr><th>Rank</th><th>Pain Point</th><th>Count</th><th>Sources</th></tr>
-    <tr class="rank-1"><td>1</td><td>Revenue stalled / plateau</td><td>18</td><td>Reddit (8), Dan Henry (6), Hormozi (4)</td></tr>
+    <tr><th>#</th><th>Pain Point</th><th>Count</th><th>Primary Sources</th></tr>
+    <tr class="top-rank"><td>1</td><td>Revenue stalled / plateau</td><td>18</td><td>Reddit (8), Dan Henry (6), Hormozi (4)</td></tr>
     <tr><td>2</td><td>Owner is the bottleneck / doing everything</td><td>15</td><td>Reddit (9), Dan Henry (4), Hormozi (2)</td></tr>
     <tr><td>3</td><td>No systems / running like a freelancer</td><td>13</td><td>Reddit (7), Dan Henry (4), Hormozi (2)</td></tr>
     <tr><td>4</td><td>Previous solution wasted money (agency/consultant)</td><td>11</td><td>Reddit (6), Dan Henry (3), Hormozi (2)</td></tr>
     <tr><td>5</td><td>Offer unclear / can't explain what they do</td><td>10</td><td>Dan Henry (8), Reddit (2)</td></tr>
     <tr><td>6</td><td>Attribution broken / no idea what's working</td><td>8</td><td>Hormozi (5), Reddit (3)</td></tr>
     <tr><td>7</td><td>Underpriced / leaving money on table</td><td>8</td><td>Hormozi (6), Dan Henry (2)</td></tr>
-    <tr><td>8</td><td>Business affecting marriage/relationships</td><td>7</td><td>Reddit (7)</td></tr>
+    <tr><td>8</td><td>Business affecting marriage / relationships</td><td>7</td><td>Reddit (7) — 173 + 94 upvote posts</td></tr>
     <tr><td>9</td><td>Time consumed / no personal life</td><td>7</td><td>Reddit (5), Dan Henry (2)</td></tr>
-    <tr><td>10</td><td>Solving the wrong problem</td><td>7</td><td>Hormozi (7)</td></tr>
+    <tr><td>10</td><td>Solving the wrong problem</td><td>7</td><td>Hormozi (7) — every single case</td></tr>
     <tr><td>11</td><td>Untapped existing customer revenue</td><td>6</td><td>Hormozi (6)</td></tr>
     <tr><td>12</td><td>Hiring before systems are ready</td><td>5</td><td>Reddit (4), Hormozi (1)</td></tr>
-    <tr><td>13</td><td>Content/marketing without a spearhead offer</td><td>5</td><td>Dan Henry (5)</td></tr>
-    <tr><td>14</td><td>Channel dependency (85%+ on one source)</td><td>4</td><td>Hormozi (4)</td></tr>
+    <tr><td>13</td><td>Content / marketing without a spearhead offer</td><td>5</td><td>Dan Henry (5)</td></tr>
+    <tr><td>14</td><td>Channel dependency (85%+ from one source)</td><td>4</td><td>Hormozi (4)</td></tr>
     <tr><td>15</td><td>Working hard but in wrong direction</td><td>4</td><td>Dan Henry (3), Reddit (1)</td></tr>
   </table>
+
+  <div class="alert alert-brand">
+    <strong>Top 3 are your ad strategy:</strong> Revenue plateau (18×) + Owner as bottleneck (15×) + No systems (13×) — these three point at the same root cause. The ICP knows they're stuck. They don't know the constraint is structural. That's the education angle that opens the conversation.
+  </div>
 </div>
 </div>
 
 <script>
-function showTab(id) {
+function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
